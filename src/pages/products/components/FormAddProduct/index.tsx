@@ -1,27 +1,28 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Field, FieldsWrapper, Form } from "./styles"
 // @ts-ignore
-import { useCategories } from "../../../../hooks/useCategories"
+import { useProducts } from "../../../../hooks/useProducts"
 import { useForm } from "react-hook-form";
 import * as zod from "zod"
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const addProductValidationSchema = zod.object({
-  name: zod.string(),
-  category: zod.string(),
-  price: zod.string(),
+  name: zod.string().nonempty("Name is required"),
+  category: zod.string().nonempty("Category is required"),
+  price: zod.coerce.number().min(1, "Price is required"),
 })
 
 type AddProductDataType = zod.infer<typeof addProductValidationSchema>
 
 export const FormAddProduct = () => {
-  const { createProduct, allProducts } = useCategories()
-  const {register, handleSubmit} = useForm<AddProductDataType>({
+  const { addProduct, allProducts } = useProducts()
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<AddProductDataType>({
     resolver: zodResolver(addProductValidationSchema)
   })
 
   const handleSubmitAddProduct = async (data: AddProductDataType) => {
-    await createProduct(data)
+    await addProduct(data)
+    reset();
     allProducts();
   }
 
@@ -36,6 +37,7 @@ export const FormAddProduct = () => {
             placeholder="Product name"
             {...register("name")}
           />
+          <p>{errors?.name?.message}</p>
         </Field>
         <Field>
           <label htmlFor="category">Category</label>
@@ -44,8 +46,9 @@ export const FormAddProduct = () => {
             type="text"
             placeholder="Category"
             {...register("category")}
-
+            
           />
+          <p>{errors?.category?.message}</p>
         </Field>
         <Field>
           <label htmlFor="price">Price</label>
@@ -56,6 +59,7 @@ export const FormAddProduct = () => {
             {...register("price")}
 
           />
+          <p>{errors?.price?.message}</p>
         </Field>
       </FieldsWrapper>
 

@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { Category } from '../CategoriesCard';
 
 const editCategorySchema = zod.object({
-  name: zod.string().nonempty("This field is required")
+  name: zod.string().nonempty("This field is empty")
 })
 
 type EditCategoryDataType = zod.infer<typeof editCategorySchema>
@@ -22,13 +22,12 @@ interface EditCategoryProps {
 
 export const EditCategory = ({ category }: EditCategoryProps) => {
   const { updateCategory } = useCategories()
-  const { register, handleSubmit } = useForm<EditCategoryDataType>({
+  const { register, handleSubmit, formState: { errors } } = useForm<EditCategoryDataType>({
     resolver: zodResolver(editCategorySchema)
   })
 
   const handleSubmitEditCategory = async (data: EditCategoryDataType) => {
     await updateCategory({ name: data.name, id: category.id })
-    console.log(data)
   }
 
   return (
@@ -53,6 +52,7 @@ export const EditCategory = ({ category }: EditCategoryProps) => {
               {...register("name")}
             />
             <button type='submit'>Edit</button>
+            <p>{errors?.name?.message}</p>
           </EditCategoryWrapper>
           <Dialog.Description />
           <Close>

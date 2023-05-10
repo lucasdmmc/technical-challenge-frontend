@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Field, FieldsWrapper, Form } from "./styles"
 // @ts-ignore
-import { useCategories } from "../../../../hooks/useCategories"
+import { useProducts } from "../../../../hooks/useProducts"
 import { useForm } from "react-hook-form";
 import * as zod from "zod"
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,14 +20,14 @@ interface FormEditProductProps {
 }
 
 export const FormEditProduct = ({ product }: FormEditProductProps ) => {
-  const { updateProduct, allProducts } = useCategories()
-  const {register, handleSubmit} = useForm<EditProductDataType>({
+  const { updateProduct, allProducts } = useProducts()
+  const { register, handleSubmit, reset } = useForm<EditProductDataType>({
     resolver: zodResolver(editProductValidationSchema)
   })
 
   const handleSubmitEditProduct = async (data: EditProductDataType) => {
-    console.log(data)
-    await updateProduct({ name: data.name, category: data.category, price: data.price, id: product.id })
+    await updateProduct({...data, id: product.id})
+    reset();
     allProducts()
   }
 

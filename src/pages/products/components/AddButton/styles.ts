@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import * as Dialog from '@radix-ui/react-dialog';
 
-export const Container = styled.div`
+export const AddButtonStyled = styled.button`
   width: 250px;
   height: 150px;
   background: none;

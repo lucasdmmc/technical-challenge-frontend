@@ -1,15 +1,15 @@
 import { Plus, X } from "phosphor-react"
-import { Close, Container, Content, Overlay, Title } from "./styles"
+import { Close, AddButtonStyled, Content, Overlay, Title } from "./styles"
 import * as Dialog from '@radix-ui/react-dialog';
 import { FormAddProduct } from "../FormAddProduct";
 
-export const AddProduct = () => {
+export const AddButton = () => {
   return (
     <Dialog.Root>
     <Dialog.Trigger asChild>
-      <Container>
+      <AddButtonStyled>
         <Plus size={50} />
-      </Container>
+      </AddButtonStyled>
     </Dialog.Trigger>
     <Dialog.Portal>
       <Overlay />

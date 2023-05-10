@@ -2,7 +2,7 @@
 import { Container, Wrapper } from "./styles"
 import { EditProduct } from "../EditProduct";
 // @ts-ignore
-import { useCategories } from "../../../../hooks/useCategories"
+import { useProducts } from "../../../../hooks/useProducts"
 import { Fragment } from "react";
 
 export interface Product {
@@ -13,10 +13,10 @@ export interface Product {
 }
 
 export const ProductCard = () => {
-  const {products, deleteProduct} = useCategories()
+  const {products, deleteProduct} = useProducts()
   return (
     <Fragment>
-      {products.map(product => (
+      {products.map((product: Product) => (
         <Container key={String(product.id)}>
           <Wrapper>
             <span>Name: {product.name}</span>

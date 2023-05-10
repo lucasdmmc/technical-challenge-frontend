@@ -1,4 +1,4 @@
-import { AddProduct } from "./components/AddProduct"
+import { AddButton } from "./components/AddButton"
 import { ProductCard } from "./components/ProductCard"
 import { Container, Wrapper } from "./styles"
 
@@ -10,7 +10,7 @@ export const Products = () => {
       </header>
       <Wrapper>
         <ProductCard />
-        <AddProduct />
+        <AddButton />
       </Wrapper>
     </Container>
   )

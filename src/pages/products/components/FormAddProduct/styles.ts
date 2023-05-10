@@ -5,7 +5,12 @@ export const Form = styled.form`
   align-items: center;
   flex-direction: column;
   gap: 10px;
-  margin-top: 20px;
+
+  p {
+    font-size: 12px;
+    margin-top: 4px;
+    color: ${({ theme }) => theme["RED-500"]}
+  }
 
   button {
     width: 100%;
@@ -18,7 +23,7 @@ export const Form = styled.form`
     color: ${({ theme }) => theme["GRAY-800"]};
     font-weight: bold;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 10px;
     transition: background 0.4s;
 
     :hover {

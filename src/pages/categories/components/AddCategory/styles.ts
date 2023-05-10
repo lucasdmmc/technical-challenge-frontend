@@ -48,6 +48,14 @@ export const Form = styled.form`
   align-items: center;
   gap: 10px;
   margin-top: 20px;
+  position: relative;
+
+  p {
+    position: absolute;
+    top: 47px;
+    font-size: 12px;
+    color: ${({ theme }) => theme["RED-500"]}
+  }
 
   input {
     width: 100%;

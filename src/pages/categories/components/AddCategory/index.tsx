@@ -1,27 +1,27 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Plus, X } from "phosphor-react"
+// @ts-nocheck
 import { Close, Container, Content, Form, Overlay, Title } from "./styles"
-import * as Dialog from '@radix-ui/react-dialog';
+import { Plus, X } from "phosphor-react"
 import { useForm } from "react-hook-form";
-import * as zod from "zod"
 import { zodResolver } from "@hookform/resolvers/zod";
-// @ts-ignore
 import { useCategories } from "../../../../hooks/useCategories"
+import * as Dialog from '@radix-ui/react-dialog';
+import * as zod from "zod"
 
 const addCategorySchema = zod.object({
-  name: zod.string().nonempty("This field is required")
+  name: zod.string().nonempty("This field is empty")
 })
 
 type CategoryDataType = zod.infer<typeof addCategorySchema>
 
 export const AddCategory = () => {
-  const {createCategory} = useCategories()
-  const { register, handleSubmit } = useForm<CategoryDataType>({
+  const { addCategory } = useCategories()
+  const { register, handleSubmit, formState: { errors } } = useForm<CategoryDataType>({
     resolver: zodResolver(addCategorySchema)
   })
 
   const handleSubmitAddCategory = async (data: CategoryDataType) => {
-    await createCategory(data);
+    await addCategory(data);
   }
 
   return (
@@ -42,6 +42,7 @@ export const AddCategory = () => {
             {...register("name")}
           />
           <button>Add</button>
+          <p>{errors?.name?.message}</p>
         </Form>
         <Dialog.Description />
         <Close>
