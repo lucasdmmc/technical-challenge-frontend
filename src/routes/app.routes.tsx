@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { Categories } from "../pages/categories";
-import { Products } from "../pages/products";
-import { BothPages } from "../pages/bothPages";
+import { Categories } from "@/pages/categories";
+import { Products } from "@/pages/products";
+import { BothPages } from "@/pages/bothPages";
 
 export const AppRoutes = () => (
   <Routes>

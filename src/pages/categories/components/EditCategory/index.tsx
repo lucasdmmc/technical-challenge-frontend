@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import * as Dialog from '@radix-ui/react-dialog';
-import { PencilSimpleLine, X } from 'phosphor-react';
-import { Close, Content, CurrentCategoryWrapper, EditCategoryWrapper, Overlay, Title } from './styles';
-import { useForm } from "react-hook-form";
-import * as zod from "zod"
-import { zodResolver } from "@hookform/resolvers/zod";
 // @ts-ignore
-import { useCategories } from "../../../../hooks/useCategories"
-import { useState } from 'react';
-import { Category } from '../CategoriesCard';
+import { useCategories } from "@hooks/useCategories"
+import { Close, Content, CurrentCategoryWrapper, EditCategoryWrapper, Overlay, Title } from './styles';
+import { PencilSimpleLine, X } from 'phosphor-react';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Category } from '@categories/CategoriesCard';
+import * as zod from "zod"
+import * as Dialog from '@radix-ui/react-dialog';
 
 const editCategorySchema = zod.object({
   name: zod.string().nonempty("This field is empty")

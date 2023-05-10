@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Field, FieldsWrapper, Form } from "./styles"
 // @ts-ignore
-import { useProducts } from "../../../../hooks/useProducts"
+import { useProducts } from "@hooks/useProducts"
 import { useForm } from "react-hook-form";
-import * as zod from "zod"
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Product } from "../ProductCard";
+import { Product } from "@products/ProductCard";
+import * as zod from "zod"
 
 const editProductValidationSchema = zod.object({
   name: zod.string(),

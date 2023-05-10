@@ -1,7 +1,7 @@
 import { Plus, X } from "phosphor-react"
 import { Close, AddButtonStyled, Content, Overlay, Title } from "./styles"
 import * as Dialog from '@radix-ui/react-dialog';
-import { FormAddProduct } from "../FormAddProduct";
+import { FormAddProduct } from "@products/FormAddProduct";
 
 export const AddButton = () => {
   return (

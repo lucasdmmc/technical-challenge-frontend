@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { api } from "../services/api"
+import { api } from "@/services/api"
 import { AxiosResponse } from "axios";
-import { Product } from "../pages/products/components/ProductCard";
+import { Product } from "@/pages/products/components/ProductCard";
 
 interface ProductsContextType {
   products: Product[];

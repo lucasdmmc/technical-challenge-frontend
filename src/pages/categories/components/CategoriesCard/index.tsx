@@ -1,19 +1,19 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Button, Container, Header } from "./styles"
 // @ts-ignore
-import { useCategories } from "../../../../hooks/useCategories"
-import { EditCategory } from "../EditCategory";
+import { useCategories } from "@hooks/useCategories"
+import { EditCategory } from "@categories/EditCategory";
 
 export interface Category {
   id: number;
-  name?: string;
+  name: string;
 }
 
 export const CategoriesCard = () => {
   const { categories, deleteCategory } = useCategories();
   return (
     <>
-      {categories.map(category => {
+      {categories.map((category: Category) => {
         return (
           <Container key={String(category.id)}>
             <Header>

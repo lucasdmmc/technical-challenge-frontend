@@ -4,7 +4,7 @@ import { Close, Container, Content, Form, Overlay, Title } from "./styles"
 import { Plus, X } from "phosphor-react"
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useCategories } from "../../../../hooks/useCategories"
+import { useCategories } from "@hooks/useCategories"
 import * as Dialog from '@radix-ui/react-dialog';
 import * as zod from "zod"
 

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { Category } from "../pages/categories/components/CategoriesCard";
-import { api } from "../services/api"
+import { Category } from "@/pages/categories/components/CategoriesCard";
+import { api } from "@/services/api"
 import { AxiosResponse } from "axios";
 
 interface CategoriesContextType {
