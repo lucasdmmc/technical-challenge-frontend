@@ -8,9 +8,9 @@ import { Product } from "@products/ProductCard";
 import * as zod from "zod"
 
 const editProductValidationSchema = zod.object({
-  name: zod.string(),
-  category: zod.string(),
-  price: zod.string(),
+  name: zod.string().nonempty("This field is empty"),
+  category: zod.string().nonempty("This field is empty"),
+  price: zod.coerce.number().min(1, "This field is empty"),
 })
 
 type EditProductDataType = zod.infer<typeof editProductValidationSchema>
@@ -21,13 +21,13 @@ interface FormEditProductProps {
 
 export const FormEditProduct = ({ product }: FormEditProductProps ) => {
   const { updateProduct, allProducts } = useProducts()
-  const { register, handleSubmit, reset } = useForm<EditProductDataType>({
-    resolver: zodResolver(editProductValidationSchema)
+  const { register, handleSubmit, formState: { errors }} = useForm<EditProductDataType>({
+    resolver: zodResolver(editProductValidationSchema),
+    defaultValues: { ...product } 
   })
 
   const handleSubmitEditProduct = async (data: EditProductDataType) => {
     await updateProduct({...data, id: product.id})
-    reset();
     allProducts()
   }
 
@@ -42,6 +42,7 @@ export const FormEditProduct = ({ product }: FormEditProductProps ) => {
             placeholder="Product name"
             {...register("name")}
           />
+          <p>{errors?.name?.message}</p>
         </Field>
         <Field>
           <label htmlFor="category">Category</label>
@@ -50,22 +51,23 @@ export const FormEditProduct = ({ product }: FormEditProductProps ) => {
             type="text"
             placeholder="Category"
             {...register("category")}
-
           />
+          <p>{errors?.category?.message}</p>
         </Field>
         <Field>
           <label htmlFor="price">Price</label>
           <input
             id="price"
             type="text"
-            placeholder="$ 00.00"
+            inputMode="decimal"
+            placeholder="$ 00,00"
             {...register("price")}
-
           />
+          <p>{errors?.price?.message}</p>
+
         </Field>
       </FieldsWrapper>
-
-      <button type="submit">Save</button>
+        <button type="submit">Save</button>
     </Form>
   )
 }

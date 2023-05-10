@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 import { useProducts } from "@hooks/useProducts"
 import { Field, FieldsWrapper, Form } from "./styles"
@@ -54,7 +55,7 @@ export const FormAddProduct = () => {
           <input
             id="price"
             type="text"
-            placeholder="US 00.00"
+            placeholder="$ 00.00"
             {...register("price")}
 
           />

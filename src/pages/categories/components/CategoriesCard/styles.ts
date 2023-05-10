@@ -10,7 +10,7 @@ export const Container = styled.div`
   
   strong {
     color: ${({ theme }) => theme["GRAY-200"]};
-    font-size: 23px;
+    font-size: 16px;
   }
 `;
 

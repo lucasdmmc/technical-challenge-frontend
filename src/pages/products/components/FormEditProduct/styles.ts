@@ -1,15 +1,18 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
+  height: 350px;
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 10px;
   margin-top: 20px;
+  position: relative;
+  
 
   button {
     width: 100%;
-    height: 40px;
+    height: 50px;
     background: none;
     border: none;
     background: ${({ theme }) => theme["GREEN-500"]};
@@ -17,19 +20,27 @@ export const Form = styled.form`
     color: ${({ theme }) => theme["GRAY-800"]};
     font-weight: bold;
     cursor: pointer;
-    margin-top: 20px;
+    position: absolute;
+    bottom: 0;
     transition: background 0.2s;
 
     :hover {
       background: ${({ theme }) => theme["GREEN-600"]};
     }
   }
+
+  p {
+    font-size: 12px;
+    margin-top: 4px;
+    color: ${({ theme }) => theme["RED-500"]}
+  }
+
 ` 
 
 export const FieldsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 8px;
 `
 
 export const Field = styled.div`

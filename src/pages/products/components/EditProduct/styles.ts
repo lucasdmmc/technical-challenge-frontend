@@ -42,8 +42,9 @@ export const Content = styled(Dialog.Content)`
   background: ${({ theme }) => theme["GRAY-900"]};
   border-radius: 6px;
   width: 300px;
-  height: 450px;
+  height: 500px;
   padding: 20px;
+  border: 1px solid ${({ theme }) => theme["GRAY-800"]};
 `
 
 export const Title = styled(Dialog.Title)`

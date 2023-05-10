@@ -21,12 +21,14 @@ interface EditCategoryProps {
 
 export const EditCategory = ({ category }: EditCategoryProps) => {
   const { updateCategory } = useCategories()
-  const { register, handleSubmit, formState: { errors } } = useForm<EditCategoryDataType>({
-    resolver: zodResolver(editCategorySchema)
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<EditCategoryDataType>({
+    resolver: zodResolver(editCategorySchema),
+    defaultValues: { name: category.name}
   })
 
   const handleSubmitEditCategory = async (data: EditCategoryDataType) => {
     await updateCategory({ name: data.name, id: category.id })
+    reset();
   }
 
   return (

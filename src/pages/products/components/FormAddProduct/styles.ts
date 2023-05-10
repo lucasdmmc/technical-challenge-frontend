@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
+  height: 350px;
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 10px;
+  position: relative;
+  margin-top: 20px;
 
   p {
     font-size: 12px;
@@ -14,16 +17,16 @@ export const Form = styled.form`
 
   button {
     width: 100%;
-    height: 40px;
+    height: 50px;
     background: none;
     border: none;
     background: ${({ theme }) => theme["GREEN-500"]};
-
+    position: absolute;
+    bottom: 0;
     border-radius: 4px;
     color: ${({ theme }) => theme["GRAY-800"]};
     font-weight: bold;
     cursor: pointer;
-    margin-top: 10px;
     transition: background 0.4s;
 
     :hover {
@@ -35,7 +38,7 @@ export const Form = styled.form`
 export const FieldsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 8px;
 `
 
 export const Field = styled.div`
