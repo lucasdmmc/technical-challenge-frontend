@@ -28,7 +28,7 @@ export const CategoriesContextProvider = ({ children }: CategoriesContextProvide
       .then((response: AxiosResponse) => setCategories(response.data))
     } catch (error) {
       console.log(error)
-      alert("")
+      alert(error)
     }
   }
 

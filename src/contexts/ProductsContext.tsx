@@ -44,10 +44,13 @@ export const ProductsContextProvider = ({ children }: ProductsContextProviderPro
   }
 
   async function deleteProduct(product: Product) {
-    try {
+    const remove = confirm("Are you sure you want to delete this product?")
+    if(remove) {
       await api.delete(`/products/${product.id}`)
       setProducts(state => state.filter(p => p.id !== product.id))
       alert("Product deleted successfully")
+    }
+    try {
     } catch (error) {
       console.log(error)
       alert(error);
