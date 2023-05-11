@@ -1,6 +1,6 @@
-import { Button, Container } from "./styles"
+import { Button, Container } from "@styles/pages/LinkPage"
 
-export const BothPages = () => {
+export const LinkPage = () => {
   return (
     <Container>
       <Button to="/categories">Categories</Button>

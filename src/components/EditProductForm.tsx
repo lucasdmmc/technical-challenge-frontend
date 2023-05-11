@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Field, FieldsWrapper, Form } from "./styles"
+import { Field, FieldsWrapper, Form } from "@styles/components/EditProductForm"
 // @ts-ignore
 import { useProducts } from "@hooks/useProducts"
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Product } from "@products/ProductCard";
+import { Product } from "./ProductCard";
 import * as zod from "zod"
 
 const editProductValidationSchema = zod.object({
@@ -19,7 +19,7 @@ interface FormEditProductProps {
   product: Product
 }
 
-export const FormEditProduct = ({ product }: FormEditProductProps ) => {
+export const EditProductForm = ({ product }: FormEditProductProps ) => {
   const { updateProduct, allProducts } = useProducts()
   const { register, handleSubmit, formState: { errors }} = useForm<EditProductDataType>({
     resolver: zodResolver(editProductValidationSchema),

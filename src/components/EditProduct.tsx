@@ -1,8 +1,8 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { PencilSimpleLine, X } from 'phosphor-react';
-import { Close, Content, Overlay, Title } from './styles';
-import { FormEditProduct } from '@products/FormEditProduct';
-import { Product } from '@products/ProductCard';
+import { Close, Content, Overlay, Title } from '@styles/components/EditProduct';
+import { EditProductForm } from './EditProductForm';
+import { Product } from './ProductCard';
 
 interface EditProductProps {
   product: Product
@@ -18,7 +18,7 @@ export const EditProduct = ({ product }: EditProductProps) => {
         <Overlay />
         <Content>
           <Title>Edit Product</Title>
-            <FormEditProduct product={product}/>
+            <EditProductForm product={product}/>
           <Dialog.Description />
           <Close>
             <X size={24} weight="fill"/>

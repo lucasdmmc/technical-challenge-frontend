@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 import { useCategories } from "@hooks/useCategories"
-import { Close, Content, CurrentCategoryWrapper, EditCategoryWrapper, Overlay, Title } from './styles';
+import { Close, Content, CurrentCategoryWrapper, EditCategoryWrapper, Overlay, Title } from '@styles/components/EditCategory';
 import { PencilSimpleLine, X } from 'phosphor-react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Category } from '@categories/CategoriesCard';
+import { Category } from './CategoryCard';
 import * as zod from "zod"
 import * as Dialog from '@radix-ui/react-dialog';
 
@@ -21,14 +21,13 @@ interface EditCategoryProps {
 
 export const EditCategory = ({ category }: EditCategoryProps) => {
   const { updateCategory } = useCategories()
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<EditCategoryDataType>({
+  const { register, handleSubmit, formState: { errors } } = useForm<EditCategoryDataType>({
     resolver: zodResolver(editCategorySchema),
     defaultValues: { name: category.name}
   })
 
   const handleSubmitEditCategory = async (data: EditCategoryDataType) => {
     await updateCategory({ name: data.name, id: category.id })
-    reset();
   }
 
   return (

@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Button, Container, Header } from "./styles"
 // @ts-ignore
 import { useCategories } from "@hooks/useCategories"
-import { EditCategory } from "@categories/EditCategory";
+import { Button, Container, Header } from "@styles/components/CategoryCard"
+import { EditCategory } from "./EditCategory";
 
 export interface Category {
   id: number;
   name: string;
 }
 
-export const CategoriesCard = () => {
+export const CategoryCard = () => {
   const { categories, deleteCategory } = useCategories();
   return (
     <>

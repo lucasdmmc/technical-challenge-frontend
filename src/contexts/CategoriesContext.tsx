@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { Category } from "@/pages/categories/components/CategoriesCard";
+import { Category } from "@components/CategoriesCard";
 import { api } from "@/services/api"
 import { AxiosResponse } from "axios";
 
@@ -10,6 +10,7 @@ interface CategoriesContextType {
   addCategory: (category: Category) => Promise<void>;
   deleteCategory: (category: Category) => Promise<void>;
   updateCategory: (category: Category) => Promise<void>;
+  allCategories: (category: Category) => Promise<void>;
 }
 
 export const CategoriesContext = createContext({} as CategoriesContextType)
@@ -75,6 +76,7 @@ export const CategoriesContextProvider = ({ children }: CategoriesContextProvide
       addCategory,
       deleteCategory,
       updateCategory,
+      allCategories
     }}>
       {children}
     </CategoriesContext.Provider>

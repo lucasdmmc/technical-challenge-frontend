@@ -3,7 +3,7 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { api } from "@/services/api"
 import { AxiosResponse } from "axios";
-import { Product } from "@/pages/products/components/ProductCard";
+import { Product } from "@components/ProductCard";
 
 interface ProductsContextType {
   products: Product[];
