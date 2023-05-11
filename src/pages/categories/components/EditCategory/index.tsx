@@ -20,47 +20,48 @@ interface EditCategoryProps {
 }
 
 export const EditCategory = ({ category }: EditCategoryProps) => {
-  const { updateCategory } = useCategories()
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<EditCategoryDataType>({
+  const { updateCategory, allCategories } = useCategories()
+  const { register, handleSubmit, formState: { errors } } = useForm<EditCategoryDataType>({
     resolver: zodResolver(editCategorySchema),
     defaultValues: { name: category.name}
   })
 
   const handleSubmitEditCategory = async (data: EditCategoryDataType) => {
-    await updateCategory({ name: data.name, id: category.id })
-    reset();
+    try {
+      await updateCategory({ ...data, id: category.id })
+      allCategories()
+    } catch (error) {
+      alert(error)
+    }
   }
 
   return (
     <Dialog.Root>
-      <Dialog.Trigger asChild>
-        <PencilSimpleLine
-          size={22}
-          weight="fill"
-        />
-      </Dialog.Trigger>
-      <Dialog.Portal>
-        <Overlay />
-        <Content>
-          <Title>Edit category</Title>
-          <CurrentCategoryWrapper>
-            <span>Current name: {category.name}</span>
-          </CurrentCategoryWrapper>
-          <EditCategoryWrapper onSubmit={handleSubmit(handleSubmitEditCategory)}>
-            <input
-              type="text" 
-              placeholder="Choose category name"
-              {...register("name")}
-            />
-            <button type='submit'>Edit</button>
-            <p>{errors?.name?.message}</p>
-          </EditCategoryWrapper>
-          <Dialog.Description />
-          <Close>
-            <X size={24} weight="fill"/>
-          </Close>
-        </Content>
-      </Dialog.Portal>
-    </Dialog.Root>
+    <Dialog.Trigger asChild>
+      <PencilSimpleLine size={22} weight="fill"/>
+    </Dialog.Trigger>
+    <Dialog.Portal>
+      <Overlay />
+      <Content>
+        <Title>Edit category</Title>
+        <CurrentCategoryWrapper>
+          <span>Current category: {category.name}</span>
+        </CurrentCategoryWrapper>
+        <EditCategoryWrapper onSubmit={handleSubmit(handleSubmitEditCategory)}>
+          <input
+            type="text"
+            placeholder="Choose category name"
+            {...register("name")}
+          />
+          <button type='submit'>Edit</button>
+          <p>{errors?.name?.message}</p>
+        </EditCategoryWrapper>
+        <Dialog.Description />
+        <Close>
+          <X size={24} weight="fill"/>
+        </Close>
+      </Content>
+    </Dialog.Portal>
+  </Dialog.Root>
   )
 }

@@ -10,6 +10,8 @@ interface CategoriesContextType {
   addCategory: (category: Category) => Promise<void>;
   deleteCategory: (category: Category) => Promise<void>;
   updateCategory: (category: Category) => Promise<void>;
+  allCategories: (category: Category) => Promise<void>;
+
 }
 
 export const CategoriesContext = createContext({} as CategoriesContextType)
@@ -44,11 +46,14 @@ export const CategoriesContextProvider = ({ children }: CategoriesContextProvide
   }
 
   async function deleteCategory(category: Category) {
+    const remove = confirm("Are you sure you want to delete this category?")
     try {
-      await api.delete(`/categories/${category.id}`)
-      setCategories(state => state.filter(c => c.id !== category.id))
-      alert("Category deleted successfully")
-      allCategories();
+      if(remove) {
+        await api.delete(`/categories/${category.id}`)
+        setCategories(state => state.filter(c => c.id !== category.id))
+        alert("Category deleted successfully")
+        allCategories();
+      }
     } catch (error) {
       console.log(error)
       alert(error);
@@ -58,7 +63,7 @@ export const CategoriesContextProvider = ({ children }: CategoriesContextProvide
   async function updateCategory(category: Category) {
     try {
       await api.put(`/categories/${category.id}`, { ...category })
-      allCategories();
+      alert("Category updated successfully")
     } catch (error) {
       console.log(error)
       alert(error);
@@ -73,6 +78,7 @@ export const CategoriesContextProvider = ({ children }: CategoriesContextProvide
     <CategoriesContext.Provider value={{
       categories,
       addCategory,
+      allCategories,
       deleteCategory,
       updateCategory,
     }}>
