@@ -24,7 +24,7 @@ export const CategoriesContextProvider = ({ children }: CategoriesContextProvide
 
   async function allCategories() {
     try {
-      await api.get<Category[]>("/categories")
+      await api.get("/categories")
       .then((response: AxiosResponse) => setCategories(response.data))
     } catch (error) {
       console.log(error)
@@ -80,7 +80,6 @@ export const CategoriesContextProvider = ({ children }: CategoriesContextProvide
       allCategories,
       deleteCategory,
       updateCategory,
-      allCategories
     }}>
       {children}
     </CategoriesContext.Provider>
