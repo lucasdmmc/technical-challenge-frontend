@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 //@ts-ignore
-import { useProducts } from "@/hooks/useProducts"
-import { Container, Wrapper } from "./styles"
-import { EditProduct } from "@products/EditProduct";
+import { useProducts } from "@hooks/useProducts"
+import { Container, Wrapper } from "@styles/components/ProductCard"
+import { EditProduct } from "./EditProduct";
 import { Fragment } from "react";
 
 export interface Product {

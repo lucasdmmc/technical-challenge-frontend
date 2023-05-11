@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
-import { Close, Container, Content, Form, Overlay, Title } from "./styles"
+import { Close, Container, Content, Form, Overlay, Title } from "@styles/components/AddCategory"
 import { Plus, X } from "phosphor-react"
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

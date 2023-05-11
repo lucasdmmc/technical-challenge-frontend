@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 import { useCategories } from "@hooks/useCategories"
-import { Close, Content, CurrentCategoryWrapper, EditCategoryWrapper, Overlay, Title } from './styles';
+import { Close, Content, CurrentCategoryWrapper, EditCategoryWrapper, Overlay, Title } from '@styles/components/EditCategory';
 import { PencilSimpleLine, X } from 'phosphor-react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Category } from '@categories/CategoriesCard';
+import { Category } from './CategoryCard';
 import * as zod from "zod"
 import * as Dialog from '@radix-ui/react-dialog';
 
@@ -27,12 +27,8 @@ export const EditCategory = ({ category }: EditCategoryProps) => {
   })
 
   const handleSubmitEditCategory = async (data: EditCategoryDataType) => {
-    try {
-      await updateCategory({ ...data, id: category.id })
-      allCategories()
-    } catch (error) {
-      alert(error)
-    }
+    await updateCategory({ ...data, id: category.id });
+    allCategories();
   }
 
   return (

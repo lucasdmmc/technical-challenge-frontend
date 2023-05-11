@@ -1,6 +1,6 @@
-import { AddCategory } from "./components/AddCategory";
-import { CategoriesCard } from "./components/CategoriesCard";
-import { Container, Wrapper } from "./styles";
+import { Container, Wrapper } from "@styles/pages/Categories";
+import { AddCategory } from "@components/AddCategory";
+import { CategoryCard } from "@components/CategoryCard";
 
 export const Categories = () => {
 
@@ -10,7 +10,7 @@ export const Categories = () => {
         <h1>Categories</h1>
       </header>
       <Wrapper>
-        <CategoriesCard />
+        <CategoryCard />
         <AddCategory />
       </Wrapper>
 

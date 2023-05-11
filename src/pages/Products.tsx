@@ -1,6 +1,6 @@
-import { AddButton } from "./components/AddButton"
-import { ProductCard } from "./components/ProductCard"
-import { Container, Wrapper } from "./styles"
+import { Container, Wrapper } from "@styles/pages/Products"
+import { AddButton } from "@components/AddButton"
+import { ProductCard } from "@components/ProductCard"
 
 export const Products = () => {
   return (

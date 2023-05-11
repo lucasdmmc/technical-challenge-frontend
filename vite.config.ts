@@ -9,9 +9,10 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src/'),
       '@hooks': path.resolve(__dirname, './src/hooks'),
       '@contexts': path.resolve(__dirname, './src/contexts'),
-      '@products': path.resolve(__dirname, './src/pages/products/components'),
-      '@categories': path.resolve(__dirname, './src/pages/categories/components'),
-
+      "@pages": path.resolve(__dirname, './src/pages'),
+      '@components': path.resolve(__dirname, './src/components'),
+      '@styles': path.resolve(__dirname, './src/styles/'),
+      // "@styles-pages": path.resolve(__dirname, './src/styles/pages')
     }
   },
   plugins: [react()],

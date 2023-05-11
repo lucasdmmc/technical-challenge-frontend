@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 import { useProducts } from "@hooks/useProducts"
-import { Field, FieldsWrapper, Form } from "./styles"
+import { Field, FieldsWrapper, Form } from "@styles/components/AddProductForm"
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod"
@@ -14,7 +14,7 @@ const addProductValidationSchema = zod.object({
 
 type AddProductDataType = zod.infer<typeof addProductValidationSchema>
 
-export const FormAddProduct = () => {
+export const AddProductForm = () => {
   const { addProduct, allProducts } = useProducts()
   const { register, handleSubmit, reset, formState: { errors } } = useForm<AddProductDataType>({
     resolver: zodResolver(addProductValidationSchema)

@@ -14,10 +14,12 @@
     "jsx": "react-jsx",
     "paths": {
       "@/*": ["./src/*"],
-      "@hooks/*": ["./src/hooks"],
-      "@contects/*": ["./src/contexts"],
-      "@products/*": ["./src/pages/products/components/*"],
-      "@categories/*": ["./src/pages/categories/components/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@contexts/*": ["./src/contexts/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@components/*": ["./src/components/*"],
+      "@styles/*": ["./src/styles/*"],
+      // "@styles-pages/*": ["./src/styles/pages/*"],
 
     },
 
